@@ -1,0 +1,10 @@
+
+
+
+Uruchomienie aplikacji:
+docker compose up     <----- w katalogu Praca
+yarn dev              <----- w katalogu Praca\wp-content\themes\timber-starter-theme
+
+zapisanie bazy danych o wordpress do pliku w katalogu docker/db:
+docker compose exec db mysqldump -u root -p wordpress > docker/db/wordpress.sql
+hasło:root

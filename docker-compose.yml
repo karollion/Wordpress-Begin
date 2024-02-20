@@ -1,0 +1,30 @@
+version: '3.8'
+
+ 
+services:
+    db:
+        image: mariadb:10.2
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=wordpress
+        ports: 
+            - 3307:3306
+        volumes:
+          - ./docker/db:/docker-entrypoint-initdb.d
+
+    web:
+        build: .
+        ports:
+            - 8080:80
+        volumes:
+            - .:/var/www
+            - ./docker/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+#            - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+#            - ./docker/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+#        environment:
+#            XDEBUG_SESSION: "vsc"
+        depends_on: 
+            - db
+        dns_search: ""
+        extra_hosts:
+          - "host.docker.internal:host-gateway"
