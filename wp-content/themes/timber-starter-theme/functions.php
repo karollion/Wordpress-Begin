@@ -67,6 +67,8 @@ class StarterSite extends Timber\Site {
         add_filter('timber/twig', [ $this, 'add_to_twig' ]);
         add_action('init', [ $this, 'register_post_types' ]);
         add_action('init', [ $this, 'register_taxonomies' ]);
+        add_action( 'init', [ $this, 'register_my_menu' ] );
+        add_action( 'init', [ $this, 'register_my_menus' ] );
         parent::__construct();
     }
     /** This is where you can register custom post types. */
@@ -95,6 +97,19 @@ class StarterSite extends Timber\Site {
         return $context;
     }
 
+    function register_my_menu() {
+        register_nav_menu('header-menu',__( 'Header Menu' ));
+    }
+
+    function register_my_menus() {
+      register_nav_menus(
+        array(
+          'header-menu' => __( 'Header Menu' ),
+          'extra-menu' => __( 'Extra Menu' )
+        )
+      );
+    }
+      
     public function theme_supports() {
         // Add default posts and comments RSS feed links to head.
         add_theme_support('automatic-feed-links');

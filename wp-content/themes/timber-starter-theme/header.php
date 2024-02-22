@@ -13,3 +13,5 @@
 
 $GLOBALS['timberContext'] = Timber::context();
 ob_start();
+
+wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
