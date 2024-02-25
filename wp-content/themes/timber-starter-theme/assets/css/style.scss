@@ -3,5 +3,46 @@
 
 
 body {
+    background: #57154e;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.header {
     background: #000;
+    margin: 0 auto;
+
+    .wrapper {
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        margin-inline: 20px;
+
+        a {
+            color: aqua;
+        }
+
+        .nav-main {
+
+            ul {
+                list-style: none;
+
+                li {
+                    display: inline-block;
+                }
+            }
+
+        }
+    }
+}
+
+.content-wrapper {
+    min-height: 100vh;
+}
+
+footer {
+    text-align: center;
+    color: antiquewhite;
 }
